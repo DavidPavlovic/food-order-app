@@ -1,0 +1,21 @@
+.hero {
+    color: #fff;
+    padding: 10px 20px 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.hero__title {
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.hero__text-line {
+
+}
+
+.hero__text-line:not(:first-of-type) {
+    margin-top: 10px;
+}

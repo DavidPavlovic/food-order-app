@@ -1,0 +1,18 @@
+.card {
+    border-radius: 10px;
+}
+
+.card--hero {
+   max-width: 600px;
+   margin: 0 auto;
+   background-color: #514c4c;
+   box-shadow: #151414 0px 8px 24px;
+   margin-bottom: 40px;
+}
+
+
+.card--products {
+    background-color: #fff;
+    max-width: 750px;
+    margin: 0 auto;
+}

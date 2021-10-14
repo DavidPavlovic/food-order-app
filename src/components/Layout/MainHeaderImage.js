@@ -4,7 +4,7 @@ import classes from '../Layout/MainHeaderImage.module.css'
 
 const MainHeaderImage = () => {
     return(
-        <div class={classes['main-image']}>
+        <div className={classes['main-image']}>
             <img src={MealsImaeg} alt="meals"></img>  
         </div>  
     );
