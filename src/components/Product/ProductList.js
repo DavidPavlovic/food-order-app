@@ -1,4 +1,5 @@
 import ProductItem from "./ProductItem";
+import css from './ProductList.module.css';
 
 const DUMMY_MEALS = [
     {
@@ -34,7 +35,7 @@ const ProductList = () => {
     })
 
     return(
-        <ul>
+        <ul className={css['product-list']}>
             {productsList}
         </ul>
     );

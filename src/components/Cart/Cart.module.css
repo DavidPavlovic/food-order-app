@@ -1,4 +1,4 @@
-.button {
+.cart {
     cursor: pointer;
     font: inherit;
     border: none;
@@ -12,7 +12,11 @@
     font-weight: bold;
 }
   
-.button:hover,
-.button:active {
+.cart:hover,
+.cart:active {
     background-color: #2c0d00;
+}
+
+.cart svg {
+    width: 1rem;
 }

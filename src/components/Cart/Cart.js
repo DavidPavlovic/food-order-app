@@ -1,11 +1,14 @@
 import React from 'react';
-import classes from './Cart.module.css';
+import css from './Cart.module.css';
+import CartIcon from './CartIcon';
 
 const Cart = () => {
     return(
-        <div>
-            <button className={classes.button}>Click me</button>
-        </div>
+        <button className={css.cart}>
+            <CartIcon className={css['cart__icon']}/>
+            <div>Your Cart</div>
+            <div>1</div>
+        </button>
     );
 };
 
