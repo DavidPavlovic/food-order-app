@@ -1,22 +1,27 @@
-import React,{useContext} from 'react';
+import React,{useState, useContext} from 'react';
 import CartContext from '../../context/cart-context';
 import css from './ProductForm.module.css';
 
-const ProductForm = () => {
+const ProductForm = (props) => {
+
+    const [inputIsDefault, setInputIsDefault] = useState(1);
 
     const ctx = useContext(CartContext);
 
+    const onInputChange = (e) => {
+        setInputIsDefault(e.target.value)
+    }
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        ctx.onAdd();
+        ctx.onAdd(inputIsDefault);
     }
 
     return(
         <form onSubmit={onSubmitHandler} className={css['product-form']}>
             <fieldset className={css['product-form__fieldset']}>
                 <label className={css['product-form__label']}>Amount</label>
-                <input type="number" className={css['product-form__input']}></input>
+                <input id={'product-input-' + props.productObj.id} type="number" className={css['product-form__input']} onChange={onInputChange} value={inputIsDefault}></input>
             </fieldset>
             <button type="submit" className={css['product-form__btn']}>+ Add</button>
         </form>

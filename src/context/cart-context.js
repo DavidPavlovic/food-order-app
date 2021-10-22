@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const CartContext = React.createContext({
     cartLength: 0,
-    onAdd: () => {},
+    onAdd: (inputIsDefault) => {},
     onRemove: () => {}
 })
 
@@ -16,8 +16,8 @@ export const CartContextProvider = (props) => {
 
     }, [isCartFilled]);
 
-    const addHandler = () => {
-        isCartFilled++;
+    const addHandler = (inputIsDefault) => {
+        isCartFilled = parseInt(isCartFilled) + parseInt(inputIsDefault);
         localStorage.setItem('cartLength', isCartFilled);
         setIsCartFilled(isCartFilled);
     

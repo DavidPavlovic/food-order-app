@@ -31,7 +31,7 @@ const DUMMY_MEALS = [
 const ProductList = () => {
 
     const productsList = DUMMY_MEALS.map((item) => {
-        return <ProductItem key={item.id} name={item.name} description={item.description} price={item.price}/>;
+        return <ProductItem key={item.id} id={item.id} name={item.name} description={item.description} price={item.price}/>;
     })
 
     return(

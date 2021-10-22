@@ -1,0 +1,58 @@
+.modal {
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 80%;
+    z-index: 100;
+    overflow: hidden;
+    padding: 0;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    overflow: auto;
+    margin-top: 300px;
+    border-radius: 0.625rem;
+}
+
+.modal__content {
+    background-color: #fff;
+    padding: 1rem;
+}
+  
+.modal__body {
+    padding: 1rem;
+}
+  
+.modal__footer {
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-end;
+}
+  
+@media (min-width: 768px) {
+    .modal {
+        left: calc(50% - 20rem);
+        width: 40rem;
+    }
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.75);
+}
+
+@keyframes animatetop {
+    from {
+        top:-300px;
+        opacity:0
+    }
+    to {
+        top:0;
+        opacity:1
+    }
+}
