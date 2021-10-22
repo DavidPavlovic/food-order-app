@@ -1,10 +1,15 @@
+import React,{useContext} from 'react';
+import CartContext from '../../context/cart-context';
 import css from './ProductForm.module.css';
 
 const ProductForm = () => {
 
+    const ctx = useContext(CartContext);
+
+
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        console.log('radi')
+        ctx.onAdd();
     }
 
     return(

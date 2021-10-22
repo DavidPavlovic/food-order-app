@@ -2,8 +2,6 @@ import ProductForm from './ProductForm';
 import css from './ProductItem.module.css';
 
 const ProductItem = (props) => {
-    console.log(props)
-
     return(
         <li key={props.id} className={css['product-item']}>
             <div>
