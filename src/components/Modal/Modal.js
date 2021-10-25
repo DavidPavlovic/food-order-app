@@ -9,12 +9,31 @@ const BackdropEle = (props) => {
 };
 
 const ModalEle = (props) => {
+    const productsList = props.productList;
+
     return (
         <div className={css.modal}>
             <div className={css.modal__content}>
                 <div className={css.modal__body}>
-                    <p>{props.message}</p>
+                    <ul>
+                        {productsList.map(function(item, index){
+                            return <li key={ index }>
+                                    <span> {item.name}</span>
+                                    <div>
+                                        <div>
+                                            <span> {item.price}</span>
+                                            <span> x 2</span>
+                                        </div>
+                                        <div>
+                                            <button>-</button>
+                                            <button>+</button>
+                                        </div>
+                                    </div>
+                                </li>;
+                        })}
+                    </ul>
                 </div>
+                
                 <div className={css.modal__footer}>
                     <button onClick={props.onCloseModal}>Close</button>
                 </div>
@@ -27,10 +46,9 @@ const Modal = (props) => {
     return(
         <React.Fragment>
             { ReactDom.createPortal(<BackdropEle onCloseModal={props.onCloseModal} />, document.getElementById('backdrop-id')) }
-            { ReactDom.createPortal(<ModalEle title={props.title} message={props.message} onCloseModal={props.onCloseModal} />, document.getElementById('modal-id')) }
+            { ReactDom.createPortal(<ModalEle productList={props.productList} onCloseModal={props.onCloseModal} />, document.getElementById('modal-id')) }
         </React.Fragment>
     )
 };
-
 
 export default Modal;

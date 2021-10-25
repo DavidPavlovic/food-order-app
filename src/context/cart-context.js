@@ -2,24 +2,43 @@ import React, { useState, useEffect } from 'react';
 
 const CartContext = React.createContext({
     cartLength: 0,
-    onAdd: (inputIsDefault) => {},
+    cartArr: [],
+    onAdd: (inputIsDefault, inputObjIsDefault) => {},
     onRemove: () => {}
 })
 
 export const CartContextProvider = (props) => {
     let [isCartFilled, setIsCartFilled] = useState(0);
+    let [isCartArrFilled, setIsCartArrFilled] = useState([]);
 
     useEffect(() => {
         const cartLengthInfo = localStorage.getItem('cartLength');
+        const cartProducts = localStorage.getItem('cartArr');
 
         cartLengthInfo ?  setIsCartFilled(cartLengthInfo) :  setIsCartFilled(isCartFilled);
+        cartProducts ? setIsCartArrFilled(cartProducts) : setIsCartArrFilled(isCartArrFilled);
 
-    }, [isCartFilled]);
+    }, [isCartFilled, isCartArrFilled]);
 
-    const addHandler = (inputIsDefault) => {
+    const addHandler = (inputIsDefault, inputObjIsDefault) => {
         isCartFilled = parseInt(isCartFilled) + parseInt(inputIsDefault);
         localStorage.setItem('cartLength', isCartFilled);
-        setIsCartFilled(isCartFilled);
+        setIsCartFilled(parseInt(isCartFilled) + parseInt(inputIsDefault));
+        
+        let newArr = isCartArrFilled;
+
+        if(newArr.length > 0 || newArr == true) {
+
+            let ra = JSON.parse(newArr)
+            newArr = [...ra, inputObjIsDefault];
+
+        }else {
+            newArr.push(inputObjIsDefault);
+
+        }
+
+        setIsCartArrFilled(newArr);
+        localStorage.setItem('cartArr', JSON.stringify(newArr));
     
     };
 
@@ -30,7 +49,7 @@ export const CartContextProvider = (props) => {
     };
 
 
-    return <CartContext.Provider value={{cartLength: isCartFilled, onAdd: addHandler, onRemove: removeHandler}}>{props.children}</CartContext.Provider>
+    return <CartContext.Provider value={{cartLength: isCartFilled, cartArr: isCartArrFilled, onAdd: addHandler, onRemove: removeHandler}}>{props.children}</CartContext.Provider>
 }
 
 export default CartContext;

@@ -14,7 +14,10 @@ const ProductForm = (props) => {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        ctx.onAdd(inputIsDefault);
+        //const producObj = JSON.parse(props);
+        const myObj = props.productObj
+        console.log(props.productObj)
+        ctx.onAdd(inputIsDefault,myObj);
     }
 
     return(
