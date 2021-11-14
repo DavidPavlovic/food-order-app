@@ -1,4 +1,4 @@
-import React,{useState, useContext} from 'react';
+import { Fragment, useState, useContext} from 'react';
 import css from './Cart.module.css';
 import CartIcon from './CartIcon';
 import CartContext from '../../context/cart-context';
@@ -9,17 +9,47 @@ const Cart = (props) => {
     const ctx = useContext(CartContext);
     const [isFilled, setIsFilled] = useState([]);
 
-    var bla = ctx.cartArr;
+    const filterData = (originalArray, prop) => {
+        var newArray = [];
+        var lookupObject  = {};
+        let count = 0;
 
-    var tla = bla;
+        for(var i in originalArray) {
+            console.log(originalArray[i])
+
+            if(lookupObject[originalArray[i][prop]]) {
+                lookupObject[originalArray[i][prop]] = originalArray[i];
+                count++;
+                console.log(lookupObject[originalArray[i][prop]])
+
+                console.log('ima')
+            }else {
+                console.log('nema')
+                lookupObject[originalArray[i][prop]] = originalArray[i];
+                lookupObject[originalArray[i][prop]].place = 1;
+
+                console.log(lookupObject[originalArray[i][prop]])
+
+            }
+
+        }
+
+        for(i in lookupObject) {
+            newArray.push(lookupObject[i]);
+        }
+
+        return newArray;
+    }
     
-
-    console.log(typeof tla)
-
 
     const changeIsValid = () => {
         setIsValid(true);
         setIsFilled(JSON.parse(ctx.cartArr))
+        const arr1 = filterData(JSON.parse(ctx.cartArr), 'id')
+
+        console.log(JSON.parse(ctx.cartArr))
+
+
     }
 
     const changeIsInValid = () => {
@@ -27,18 +57,18 @@ const Cart = (props) => {
     }
 
     return(
-        <React.Fragment>
+        <Fragment>
             {isValid && 
-                <Modal changeIsValid={changeIsValid} onCloseModal={changeIsInValid} productList={isFilled}></Modal>
+                <Modal changeIsValid={changeIsValid} onCloseModal={changeIsInValid} productList={JSON.parse(ctx.cartArr)}></Modal>
             }
-            <button  className={css.cart} onClick={changeIsValid}>
+            <div  className={css.cart} onClick={changeIsValid}>
                 <CartIcon className={css['cart__icon']}/>
                 <div>Your Cart</div>
                 <div>
                     {ctx.cartLength ? ctx.cartLength : 0}
                 </div>
-            </button>
-        </React.Fragment>
+            </div>
+        </Fragment>
     );
 };
 

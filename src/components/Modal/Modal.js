@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from 'react';
 import ReactDom from 'react-dom';
 import css from '../Modal/Modal.module.css';
 
@@ -44,10 +44,10 @@ const ModalEle = (props) => {
 
 const Modal = (props) => {
     return(
-        <React.Fragment>
+        <Fragment>
             { ReactDom.createPortal(<BackdropEle onCloseModal={props.onCloseModal} />, document.getElementById('backdrop-id')) }
             { ReactDom.createPortal(<ModalEle productList={props.productList} onCloseModal={props.onCloseModal} />, document.getElementById('modal-id')) }
-        </React.Fragment>
+        </Fragment>
     )
 };
 

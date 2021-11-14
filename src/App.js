@@ -1,4 +1,4 @@
-import React from "react";
+import { Fragment } from "react";
 import MainContent from "./components/Layout/MainContent";
 import MainHeader from "./components/Layout/MainHeader";
 import MainHeaderImage from "./components/Layout/MainHeaderImage";
@@ -8,7 +8,7 @@ import ProductList from "./components/Product/ProductList";
 
 function App() {
   return (
-    <React.Fragment>
+    <Fragment>
         <MainHeader/>
         <MainHeaderImage/>
         <MainContent>
@@ -19,7 +19,7 @@ function App() {
                 <ProductList/>
             </Card>
         </MainContent>
-    </React.Fragment>
+    </Fragment>
   );
 }
 
