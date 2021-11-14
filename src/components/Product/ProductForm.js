@@ -23,8 +23,8 @@ const ProductForm = (props) => {
     return(
         <form onSubmit={onSubmitHandler} className={css['product-form']}>
             <fieldset className={css['product-form__fieldset']}>
-                <label className={css['product-form__label']}>Amount</label>
-                <input id={'product-input-' + props.productObj.id} type="number" className={css['product-form__input']} onChange={onInputChange} value={inputIsDefault}></input>
+                <label htmlFor={'product-input-' + props.productObj.id} className={css['product-form__label']}>Amount</label>
+                <input id={'product-input-' + props.productObj.id} type="number" min="1" max="5" step="1" className={css['product-form__input']} onChange={onInputChange} value={inputIsDefault}></input>
             </fieldset>
             <button type="submit" className={css['product-form__btn']}>+ Add</button>
         </form>

@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
 
 const CartContext = React.createContext({
-    cartLength: 0,
-    cartArr: [],
-    onAdd: (inputIsDefault, inputObjIsDefault) => {},
-    onRemove: () => {}
+    // cartLength: 0,
+    // cartArr: [],
+    // onAdd: (inputIsDefault, inputObjIsDefault) => {},
+    // onRemove: () => {}
+
+    items: [],
+    totalAmount: 0,
+    onAdd: (product) => {},
+    onRemove: (product) => {},
 })
 
 export const CartContextProvider = (props) => {

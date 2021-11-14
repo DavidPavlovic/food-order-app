@@ -7,6 +7,7 @@ import MainHero from "./components/Layout/MainHero";
 import ProductList from "./components/Product/ProductList";
 
 function App() {
+    
   return (
     <Fragment>
         <MainHeader/>

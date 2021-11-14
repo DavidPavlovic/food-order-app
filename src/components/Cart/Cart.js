@@ -6,6 +6,7 @@ import Modal from '../Modal/Modal';
 
 const Cart = (props) => {
     const [isValid, setIsValid] = useState(false);
+    
     const ctx = useContext(CartContext);
     const [isFilled, setIsFilled] = useState([]);
 
@@ -44,10 +45,10 @@ const Cart = (props) => {
 
     const changeIsValid = () => {
         setIsValid(true);
-        setIsFilled(JSON.parse(ctx.cartArr))
-        const arr1 = filterData(JSON.parse(ctx.cartArr), 'id')
+        // setIsFilled(JSON.parse(ctx.cartArr))
+        // const arr1 = filterData(JSON.parse(ctx.cartArr), 'id')
 
-        console.log(JSON.parse(ctx.cartArr))
+        // console.log(JSON.parse(ctx.cartArr))
 
 
     }
@@ -59,9 +60,9 @@ const Cart = (props) => {
     return(
         <Fragment>
             {isValid && 
-                <Modal changeIsValid={changeIsValid} onCloseModal={changeIsInValid} productList={JSON.parse(ctx.cartArr)}></Modal>
+                <Modal changeIsValid={changeIsValid} onCloseModal={changeIsInValid}></Modal>
             }
-            <div  className={css.cart} onClick={changeIsValid}>
+            <div className={css.cart} onClick={changeIsValid}>
                 <CartIcon className={css['cart__icon']}/>
                 <div>Your Cart</div>
                 <div>

@@ -9,7 +9,9 @@ const BackdropEle = (props) => {
 };
 
 const ModalEle = (props) => {
-    const productsList = props.productList;
+    const productsList = [];
+
+    console.log(props)
 
     return (
         <div className={css.modal}>
