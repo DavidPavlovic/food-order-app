@@ -22,6 +22,11 @@
 .modal__body {
     padding: 1rem;
 }
+
+.modal__body ul {
+    max-height: 20rem;
+    overflow: scroll;
+}
   
 .modal__footer {
     padding: 1rem;

@@ -18,7 +18,6 @@ const ProductItem = (props) => {
         console.log(props)
     };
 
-
     return(
         <li id={props.id} className={css['product-item']}>
             <div>
