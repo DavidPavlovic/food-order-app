@@ -5,52 +5,16 @@ import CartContext from '../../context/cart-context';
 import Modal from '../Modal/Modal';
 
 const Cart = (props) => {
+    const cartCtx = useContext(CartContext);
+
     const [isValid, setIsValid] = useState(false);
-    
-    const ctx = useContext(CartContext);
-    const [isFilled, setIsFilled] = useState([]);
 
-    const filterData = (originalArray, prop) => {
-        var newArray = [];
-        var lookupObject  = {};
-        let count = 0;
-
-        for(var i in originalArray) {
-            console.log(originalArray[i])
-
-            if(lookupObject[originalArray[i][prop]]) {
-                lookupObject[originalArray[i][prop]] = originalArray[i];
-                count++;
-                console.log(lookupObject[originalArray[i][prop]])
-
-                console.log('ima')
-            }else {
-                console.log('nema')
-                lookupObject[originalArray[i][prop]] = originalArray[i];
-                lookupObject[originalArray[i][prop]].place = 1;
-
-                console.log(lookupObject[originalArray[i][prop]])
-
-            }
-
-        }
-
-        for(i in lookupObject) {
-            newArray.push(lookupObject[i]);
-        }
-
-        return newArray;
-    }
-    
+    const cartItemsLengts = cartCtx.cartArr.reduce((currentNum, item) => {
+        return currentNum + item.amount;
+    }, 0);
 
     const changeIsValid = () => {
         setIsValid(true);
-        // setIsFilled(JSON.parse(ctx.cartArr))
-        // const arr1 = filterData(JSON.parse(ctx.cartArr), 'id')
-
-        // console.log(JSON.parse(ctx.cartArr))
-
-
     }
 
     const changeIsInValid = () => {
@@ -66,7 +30,7 @@ const Cart = (props) => {
                 <CartIcon className={css['cart__icon']}/>
                 <div>Your Cart</div>
                 <div>
-                    {ctx.cartLength ? ctx.cartLength : 0}
+                    {cartItemsLengts}
                 </div>
             </div>
         </Fragment>

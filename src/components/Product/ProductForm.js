@@ -1,12 +1,11 @@
-import React,{useState, useContext} from 'react';
-import CartContext from '../../context/cart-context';
+import React, { useState } from 'react';
 import css from './ProductForm.module.css';
 
-const ProductForm = (props) => {
+const ProductForm = (props, ref) => {
+    //const amountInputRef = useRef();
 
     const [inputIsDefault, setInputIsDefault] = useState(1);
-
-    const ctx = useContext(CartContext);
+    const [amountIsvalid, setAmountIsvalid] = useState(false);
 
     const onInputChange = (e) => {
         setInputIsDefault(e.target.value)
@@ -14,10 +13,16 @@ const ProductForm = (props) => {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        //const producObj = JSON.parse(props);
-        const myObj = props.productObj
-        console.log(props.productObj)
-        ctx.onAdd(inputIsDefault,myObj);
+        const enteredAmount = inputIsDefault;
+        const bla = +enteredAmount;
+
+
+        if(enteredAmount === 0 || bla < 1 || bla > 5) {
+            setAmountIsvalid(true);
+            return;
+        }
+
+        props.onAddToCart(bla);
     }
 
     return(
@@ -27,6 +32,7 @@ const ProductForm = (props) => {
                 <input id={'product-input-' + props.productObj.id} type="number" min="1" max="5" step="1" className={css['product-form__input']} onChange={onInputChange} value={inputIsDefault}></input>
             </fieldset>
             <button type="submit" className={css['product-form__btn']}>+ Add</button>
+            {amountIsvalid && <p>Please enter a valid amount (1-5).</p>}
         </form>
     );
 };
