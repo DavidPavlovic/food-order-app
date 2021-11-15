@@ -14,15 +14,12 @@ const ModalEle = (props) => {
     const cartTotalAmount = `$${cartContext.cartAmount.toFixed(2)}`;
     const isEmpty = cartContext.cartArr.length > 0;
 
-    console.log(props)
-    console.log(cartContext)
-
-    const cartAdd = () => {
-
+    const cartAdd = (item) => {
+        cartContext.onAdd({...item, amount: 1})
     }
 
-    const cartRemove = () => {
-
+    const cartRemove = (item) => {
+        cartContext.onRemove(item)
     }
 
     return (
