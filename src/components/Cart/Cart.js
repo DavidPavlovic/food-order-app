@@ -1,4 +1,4 @@
-import { Fragment, useState, useContext} from 'react';
+import { Fragment, useState, useContext, useEffect} from 'react';
 import css from './Cart.module.css';
 import CartIcon from './CartIcon';
 import CartContext from '../../context/cart-context';
@@ -8,6 +8,7 @@ const Cart = (props) => {
     const cartCtx = useContext(CartContext);
 
     const [isValid, setIsValid] = useState(false);
+    const [isBtnHighleted, setIsBtnHighleted] = useState(false);
 
     const cartItemsLengts = cartCtx.cartArr.reduce((currentNum, item) => {
         return currentNum + item.amount;
@@ -21,18 +22,37 @@ const Cart = (props) => {
         setIsValid(false);
     }
 
+    const btnClasses = `${css.cart} ${isBtnHighleted ? css.bump : ''}`;
+
+    useEffect(() => {
+        if (cartCtx.cartArr.length === 0) {
+          return;
+        }
+
+        setIsBtnHighleted(true);
+    
+        const timer = setTimeout(() => {
+            setIsBtnHighleted(false);
+        }, 300);
+    
+        return() => {
+          clearTimeout(timer);
+        };
+        
+    }, [cartCtx.cartArr]);
+
     return(
         <Fragment>
             {isValid && 
                 <Modal changeIsValid={changeIsValid} onCloseModal={changeIsInValid}></Modal>
             }
-            <div className={css.cart} onClick={changeIsValid}>
+            <button className={btnClasses} onClick={changeIsValid}>
                 <CartIcon className={css['cart__icon']}/>
                 <div>Your Cart</div>
                 <div>
                     {cartItemsLengts}
                 </div>
-            </div>
+            </button>
         </Fragment>
     );
 };
