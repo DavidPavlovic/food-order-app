@@ -38,7 +38,7 @@ const Cart = (props) => {
         return() => {
           clearTimeout(timer);
         };
-        
+
     }, [cartCtx.cartArr]);
 
     return(
@@ -49,7 +49,7 @@ const Cart = (props) => {
             <button className={btnClasses} onClick={changeIsValid}>
                 <CartIcon className={css['cart__icon']}/>
                 <div>Your Cart</div>
-                <div>
+                <div className={css.badge}>
                     {cartItemsLengts}
                 </div>
             </button>
