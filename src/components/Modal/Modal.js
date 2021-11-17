@@ -28,16 +28,16 @@ const ModalEle = (props) => {
                 <div className={css.modal__body}>
                     <ul>
                         {cartContext.cartArr.map(function(item, index){
-                            return <li key={ index }>
-                                    <span> {item.name}</span>
-                                    <div>
+                            return <li key={ index } className={css['modal__product-list-item']}>
+                                    <span className={css['modal__product-list-title']}> {item.name}</span>
+                                    <div className={css['modal__product-list-action-container']}>
                                         <div>
-                                            <span> {item.price}</span>
-                                            <span>{` x ${item.amount}`}</span>
+                                            <span className={css['modal__product-list-price']}>$ {item.price}</span>
+                                            <span className={css['modal__product-list-amount']}>{` x ${item.amount}`}</span>
                                         </div>
                                         <div>
-                                            <button onClick={cartRemove.bind(null, item.id)}>-</button>
-                                            <button onClick={cartAdd.bind(null, item)}>+</button>
+                                            <button className={css['modal__product-list-btn']} onClick={cartRemove.bind(null, item.id)}>-</button>
+                                            <button className={css['modal__product-list-btn']} onClick={cartAdd.bind(null, item)}>+</button>
                                         </div>
                                     </div>
                                 </li>;

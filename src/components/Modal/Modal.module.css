@@ -10,7 +10,7 @@
     animation-name: animatetop;
     animation-duration: 0.4s;
     overflow: auto;
-    margin-top: 300px;
+    margin-top: 18.75rem;
     border-radius: 0.625rem;
 }
 
@@ -32,6 +32,51 @@
     padding: 1rem;
     display: flex;
     justify-content: flex-end;
+}
+
+.modal__product-list-price {
+    color: #b94517;
+    margin-right: 10px;
+    width: 3.4375rem;
+    display: inline-block;
+}
+
+.modal__product-list-title {
+    font-weight: bold;
+}
+
+.modal__product-list-amount {
+    border: 1px solid black;
+    padding: 0 5px;
+    border-radius: 5px;
+}
+
+.modal__product-list-item {
+    border-bottom: 2px solid #b94517;
+    padding: 5px 0 10px 0;
+}
+
+.modal__product-list-action-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.modal__product-list-btn {
+    background: none;
+    border: 1px solid #b94517;
+    border-radius: 5px;
+    padding: 4px 5px;
+    width: 1.875rem;
+    margin-left: 7px;
+    color: #b94517;
+}
+
+.modal__product-list-btn:hover {
+    background: #8a2b06;
+    color: #fff;
+    cursor: pointer;
 }
   
 @media (min-width: 768px) {
