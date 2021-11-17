@@ -64,8 +64,8 @@
 }
 
 .modal__product-list-btn {
-    background: none;
-    border: 1px solid #b94517;
+    background-color: transparent;
+    border: 1px solid #8a2b06;
     border-radius: 5px;
     padding: 4px 5px;
     width: 1.875rem;
@@ -77,6 +77,23 @@
     background: #8a2b06;
     color: #fff;
     cursor: pointer;
+}
+
+.modal__product-list-total-amount {
+    font-weight: bold;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal__product-list-btn--large {
+    width: auto;
+    color: #b94517;
+    font: inherit;
+    cursor: pointer;
+    padding: 0.5rem 2rem;
+    border-radius: 25px;
+    margin-left: 1rem;
 }
   
 @media (min-width: 768px) {

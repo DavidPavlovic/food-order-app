@@ -43,12 +43,15 @@ const ModalEle = (props) => {
                                 </li>;
                         })}
                     </ul>
-                    <div>Total amount: {cartTotalAmount}</div>
+                    <div className={css['modal__product-list-total-amount']}>
+                        <span>Total amount: </span>
+                        <span>{cartTotalAmount}</span>
+                    </div>
                 </div>
                 
                 <div className={css.modal__footer}>
-                    <button onClick={props.onCloseModal}>Close</button>
-                    {isEmpty && <button>Order</button>}
+                    <button className={`${css['modal__product-list-btn']} ${css['modal__product-list-btn--large']}`} onClick={props.onCloseModal}>Close</button>
+                    {isEmpty && <button className={`${css['modal__product-list-btn']} ${css['modal__product-list-btn--large']}`}>Order</button>}
                 </div>
             </div>
         </div>
