@@ -10,7 +10,7 @@
     animation-name: animatetop;
     animation-duration: 0.4s;
     overflow: auto;
-    margin-top: 18.75rem;
+    margin-top: 8rem;
     border-radius: 0.625rem;
 }
 
@@ -95,13 +95,7 @@
     border-radius: 25px;
     margin-left: 1rem;
 }
-  
-@media (min-width: 768px) {
-    .modal {
-        left: calc(50% - 20rem);
-        width: 40rem;
-    }
-}
+
 
 .backdrop {
     position: fixed;
@@ -111,6 +105,13 @@
     height: 100vh;
     z-index: 10;
     background: rgba(0, 0, 0, 0.75);
+}
+
+@media (min-width: 768px) {
+    .modal {
+        left: calc(50% - 20rem);
+        width: 40rem;
+    }
 }
 
 @keyframes animatetop {

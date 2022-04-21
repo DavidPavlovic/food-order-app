@@ -2,6 +2,7 @@ import { Fragment, useContext } from 'react';
 import ReactDom from 'react-dom';
 import css from '../Modal/Modal.module.css';
 import CartContext from '../../context/cart-context';
+import CartCheckout from '../Cart/CartCheckout';
 
 const BackdropEle = (props) => {
     return  (
@@ -47,6 +48,7 @@ const ModalEle = (props) => {
                         <span>Total amount: </span>
                         <span>{cartTotalAmount}</span>
                     </div>
+                    {cartContext.cartArr.length > 0 && <CartCheckout/>}
                 </div>
                 
                 <div className={css.modal__footer}>
